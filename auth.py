@@ -10,7 +10,7 @@ import os
 load_dotenv()
 
 AUTH0_DOMAIN = os.getenv('AUTH0_DOMAIN')
-ALGORITHMS = json.loads(os.getenv('ALGORITHMS'))
+ALGORITHMS=["RS256"]
 API_AUDIENCE = os.getenv('API_AUDIENCE')
 
 
