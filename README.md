@@ -1,7 +1,7 @@
 ## Instructions to set up authentication
 
 ### to set up an authentication toy will need to login through this link.
-link: https://iamn.us.auth0.com/authorize?audience=fsnd&response_type=token&client_id=XBzjkx6BmwQgU1xwHZCG4Hvg2qE4KcaU&redirect_uri=https://127.0.0.1:5000/login-success
+link: https://iamn.us.auth0.com/authorize?audience=fsnd&response_type=token&client_id=XBzjkx6BmwQgU1xwHZCG4Hvg2qE4KcaU&redirect_uri=https://fsnd-capstone.onrender.com/login-success
 
 get token from here.
 
@@ -21,6 +21,8 @@ email = vohes12958@mitigado.com   password = @test213     role = Casting Directo
 email = hesowar704@dogemn.com      password = @test321     role = Executive Producer    token = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImRhbWNjNlM1VElaUl9vMXl5Tk4xdiJ9.eyJpc3MiOiJodHRwczovL2lhbW4udXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY0MmU4YzcxNTNlOWZiMjQ5Mjg4NzVmYiIsImF1ZCI6ImZzbmQiLCJpYXQiOjE2ODA3NzcyNDUsImV4cCI6MTY4MDg2MzY0NSwiYXpwIjoiWEJ6amt4NkJtd1FnVTF4d0haQ0c0SHZnMnFFNEtjYVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImNyZWF0ZTphY3RvcnMiLCJjcmVhdGU6bW92aWVzIiwiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJyZWFkOmFjdG9ycyIsInJlYWQ6bW92aWVzIiwidXBkYXRlOmFjdG9ycyIsInVwZGF0ZTptb3ZpZXMiXX0.EoTMY4GBxOnhjVVe5TjfKVZRP822EpUBF7gh9LOKZWlsJtr_mGAHRcsWfhqpj1zyP6k05bstbSQ85JYHMZuc9hCqDipDJAbd4einyIt7QJLLdc7bfnCRVSnWB_Mip-Yns4zPAGkOqqEdy1CMMmzS20v_Jpcve7jfusz0hbrhjqLEYjx4J-oK-tEiUeNpwe9hgLrfDKVOP0V7vlZnVYpFMTHLUFyMABY7vfXhmNuwpVqQMMXdK36CvoC4mTAUAQVxPI9jWFMQLb9jso5US3wKMyoqR2SRmopixgiJG7M1nd9fYhLEJZ1e5sbztd_Q_L3HWRgOxIz1V2UQfByrfvpFQQ
 
 ## these are .env
+#### LiveURL = https://fsnd-capstone.onrender.com/
+
 
 ### AUTH0_DOMAIN="iamn.us.auth0.com"
 ### API_AUDIENCE="fsnd"
