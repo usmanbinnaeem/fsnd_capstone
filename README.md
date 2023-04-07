@@ -1,6 +1,3 @@
-
-
-
 # Casting Agency API
 ## Motivation for the project
 The Casting Agency API was created as part of the Udacity Full Stack Web Developer Nanodegree Capstone Project. The project aims to demonstrate the skills and knowledge gained throughout the course, particularly in developing and deploying web applications using Flask and SQLAlchemy.
@@ -19,7 +16,27 @@ The project has the following dependencies:
 * coverage 6.2 or higher
 
 ## Documentation of API behavior and RBAC controls
-The Casting Agency API is a RESTful API that allows users to perform CRUD operations on movies and actors. It has the following endpoints:
+### Getting started
+* Base URL: This app can be run locally at the default http://127.0.0.1:5000/ or using the live url https://fsnd-capstone.onrender.com/.
+* Authentication: This app requires authentication to perform various actions. Authentication is implemented using Auth0, which provides JWT tokens that should be included in the Authorization header as a Bearer token.
+
+## Error handling
+Errors are returned as JSON objects in the following format:
+
+{
+  "success": False,
+  "error": 400,
+  "message": "Bad request"
+}
+
+### The API will return four types of errors:
+
+* 400: Bad request
+* 401: Unauthorized
+* 404: Resource not found
+* 422: Unprocessable entity
+
+* The Casting Agency API is a RESTful API that allows users to perform CRUD operations on movies and actors. It has the following endpoints:
 
 ## GET /actors
 * Returns a list of actors.
@@ -57,7 +74,46 @@ Adds a new movie to the database.
 * Returns status code 200 and a JSON object with a `success` key and a `movie` key containing the title of the added movie on success.
 Sample request: `curl -X POST http://localhost:5000/movies -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d '{"title": "The Shawshank Redemption", "release_date": "1994-10-14"}'`
 
+## PATCH /movies/int:movie_id
+* General:
+  * Update an existing movie's information in the database.
+  * Requires `update:movies` permission.
+  * Request Arguments: A JSON object containing the `movie` `title` and/or `release_date`.
+* Returns: An object with a `success` boolean value and the updated `movie's id and title`.
+* Sample Request: ` curl --location --request PATCH 'https://capstone-project-fsnd.herokuapp.com/movies/1' \
+--header 'Authorization: Bearer <TOKEN>' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "title": "The Godfather: Part II",
+    "release_date": "1974-12-20"
+}'
+`
 
+## DELETE /movies/{movie_id}
+
+* General:
+* Deletes a movie with a specific ID
+* Requires `authentication and permission` with the `delete:movies` permission
+* Request Headers:
+* Authorization: `Bearer <TOKEN>` (required) - The JWT token with valid permissions to delete movies
+* Response Body:
+* JSON object with the following keys:
+* success: a boolean indicating whether the request was successful or not
+* movie: the title of the deleted movie
+
+
+# RBAC controls
+The Casting Agency API uses Role-Based Access Control (RBAC) to restrict access to certain endpoints based on the user's role. The following roles are defined in the API:
+
+## Casting Assistant
+* Can view actors and movies
+## Casting Director
+* All permissions a Casting Assistant has
+* Add or delete an actor from the database
+* Modify actors or movies
+## Executive Producer
+* All permissions a Casting Director has
+* Add or delete a movie from the database
 
 ## Instructions to set up authentication
 
