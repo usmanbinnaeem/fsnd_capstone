@@ -1,3 +1,64 @@
+
+
+
+# Casting Agency API
+## Motivation for the project
+The Casting Agency API was created as part of the Udacity Full Stack Web Developer Nanodegree Capstone Project. The project aims to demonstrate the skills and knowledge gained throughout the course, particularly in developing and deploying web applications using Flask and SQLAlchemy.
+
+
+## Project dependencies
+The project has the following dependencies:
+
+* Python 3.7 or higher
+* Flask 2.0.1 or higher
+* Flask-Migrate 3.1.0 or higher
+* Flask-Cors 3.0.10 or higher
+* SQLAlchemy 1.4.26 or higher
+* psycopg2-binary 2.9.1 or higher
+* pytest 6.2.5 or higher
+* coverage 6.2 or higher
+
+## Documentation of API behavior and RBAC controls
+The Casting Agency API is a RESTful API that allows users to perform CRUD operations on movies and actors. It has the following endpoints:
+
+## GET /actors
+* Returns a list of actors.
+* Requires the `read:actors` permission.
+* Returns status code 200 and a JSON object with a `success` key and an `actors` key containing an array of actors on success.
+* Sample request: `curl https://my-casting-agency-api.com/actors -H "Authorization: Bearer <access_token>"`
+
+## POST /actors
+* Adds a new actor to the database.
+* Requires the `create:actors` permission.
+* Returns status code 200 and a JSON object with a `success` key and an `actor` key containing the name of the added actor on success.
+* Sample request: `curl -X POST https://my-casting-agency-api.com/actors -H "Authorization: Bearer <access_token>" -H "Content-Type: application/json" -d '{"name": "John Doe", "age": 35, "gender": "Male"}'`
+
+## PATCH /actors/{actor_id}
+Updates an existing actor in the database.
+* Requires the `update:actors` permission.
+* Returns status code 200 and a JSON object with a `success` key and an `actor` key containing the updated actor's details on success.
+* Sample request: `curl -X PATCH https://my-casting-agency-api.com/actors/1 -H "Authorization: Bearer <access_token>" -H "Content-Type: application/json" -d '{"name": "Jane Doe"}'`
+
+## DELETE /actors/{actor_id}
+Deletes an existing actor from the database.
+* Requires the `delete:actors` permission.
+* Returns status code 200 and a JSON object with a `success` key and an `actor` key containing the name of the deleted actor on success.
+* Sample request: `curl -X DELETE https://my-casting-agency-api.com/actors/1 -H "Authorization: Bearer <access_token>"`
+
+## GET /movies
+* Returns a list of `movies`.
+* Requires the `read:movies` permission.
+* Returns status code 200 and a JSON object with a `success` key and a `movies` key containing an array of movies on success.
+* Sample request: `curl https://my-casting-agency-api.com/movies -H "Authorization: Bearer <access_token>"`
+
+## POST /movies
+Adds a new movie to the database.
+* Requires the *create:movies* permission.
+* Returns status code 200 and a JSON object with a `success` key and a `movie` key containing the title of the added movie on success.
+Sample request: `curl -X POST http://localhost:5000/movies -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d '{"title": "The Shawshank Redemption", "release_date": "1994-10-14"}'`
+
+
+
 ## Instructions to set up authentication
 
 ### to set up an authentication toy will need to login through this link.
@@ -35,4 +96,5 @@ email = hesowar704@dogemn.com      password = @test321     role = Executive Prod
 ### DIRECTOR_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImRhbWNjNlM1VElaUl9vMXl5Tk4xdiJ9.eyJpc3MiOiJodHRwczovL2lhbW4udXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY0MmU4YmI2NTNlOWZiMjQ5Mjg4NzVkNyIsImF1ZCI6ImZzbmQiLCJpYXQiOjE2ODA3NzcxNTAsImV4cCI6MTY4MDg2MzU1MCwiYXpwIjoiWEJ6amt4NkJtd1FnVTF4d0haQ0c0SHZnMnFFNEtjYVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImNyZWF0ZTphY3RvcnMiLCJkZWxldGU6YWN0b3JzIiwicmVhZDphY3RvcnMiLCJyZWFkOm1vdmllcyIsInVwZGF0ZTphY3RvcnMiLCJ1cGRhdGU6bW92aWVzIl19.QnHmgXfz5WPMUpl0MmLnBq-9BItK2FPWK2w8Al0X6GHRl8DFVZ3iW0Rgllb0Z-r5PBjXQ-x4tLkXTCBP7FLbzM-NgML0BAypbNwE4-5CIdm3KQHVpBef-tAvt1HqAcoe0DIlPT1h0QZ5fTGu5VEHhbvBNvPAqMPoEEngN3-qDrrbqqjgjgX1J0_jE3xVOaMcGC73LG8kvuj10CAHbdEPyi47DsuOCS4J6zjLX4bZlcr1hl9dnhS0EuNfTAx0OH5K43n7Dc0DMe_6_THSrmwpzzls6ewpUMMrVrxE3RHGq8X0PrBLXW-f8XIQiU6DHPEuWeaZvcIs4Qe1P2fJsOsNmw'
 
 ### PRODUCER_TOKEN = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImRhbWNjNlM1VElaUl9vMXl5Tk4xdiJ9.eyJpc3MiOiJodHRwczovL2lhbW4udXMuYXV0aDAuY29tLyIsInN1YiI6ImF1dGgwfDY0MmU4YzcxNTNlOWZiMjQ5Mjg4NzVmYiIsImF1ZCI6ImZzbmQiLCJpYXQiOjE2ODA3NzcyNDUsImV4cCI6MTY4MDg2MzY0NSwiYXpwIjoiWEJ6amt4NkJtd1FnVTF4d0haQ0c0SHZnMnFFNEtjYVUiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImNyZWF0ZTphY3RvcnMiLCJjcmVhdGU6bW92aWVzIiwiZGVsZXRlOmFjdG9ycyIsImRlbGV0ZTptb3ZpZXMiLCJyZWFkOmFjdG9ycyIsInJlYWQ6bW92aWVzIiwidXBkYXRlOmFjdG9ycyIsInVwZGF0ZTptb3ZpZXMiXX0.EoTMY4GBxOnhjVVe5TjfKVZRP822EpUBF7gh9LOKZWlsJtr_mGAHRcsWfhqpj1zyP6k05bstbSQ85JYHMZuc9hCqDipDJAbd4einyIt7QJLLdc7bfnCRVSnWB_Mip-Yns4zPAGkOqqEdy1CMMmzS20v_Jpcve7jfusz0hbrhjqLEYjx4J-oK-tEiUeNpwe9hgLrfDKVOP0V7vlZnVYpFMTHLUFyMABY7vfXhmNuwpVqQMMXdK36CvoC4mTAUAQVxPI9jWFMQLb9jso5US3wKMyoqR2SRmopixgiJG7M1nd9fYhLEJZ1e5sbztd_Q_L3HWRgOxIz1V2UQfByrfvpFQQ'
+
 
